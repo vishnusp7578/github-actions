@@ -32,14 +32,18 @@ jobs:
       - name: "Docker auth"
         run: |-
           gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
+          
+      - name: "Docker auth1"
+        run: |-
+          gcloud auth print-access-token | sudo docker login -u oauth2accesstoken --password-stdin https://us-central1-docker.pkg.dev
 
       - name: List image
         run: |-
           gcloud artifacts repositories list --project=maven-440411 --location=us-central1
           
       - name: Build image
-        run: docker build . --tag us-central1-docker.pkg.dev/maven-440411/hello/vprem
+        run: docker build . --tag us-central1-docker.pkg.dev/maven-440411/hello/vprem1
 
 
       - name: Push image
-        run: docker push us-central1-docker.pkg.dev/maven-440411/hello/vprem
+        run: docker push us-central1-docker.pkg.dev/maven-440411/hello/vprem1
