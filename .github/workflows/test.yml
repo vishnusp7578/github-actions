@@ -10,7 +10,8 @@ env:
   PROJECT_ID: maven-440411
   REGION: us-central1
   GAR_LOCATION: us-central1-docker.pkg.dev/maven-440411/hello/
-jobs:
+
+job:
   build-push-artifact:
     runs-on: ubuntu-latest
     steps:
@@ -35,3 +36,10 @@ jobs:
       - name: List image
         run: |-
           gcloud artifacts repositories list --project=maven-440411 --location=us-central1
+          
+      - name: Build image
+        run: docker build . --file github-actions/Dockerfile --tag us-central1-docker.pkg.dev/maven-440411/hello/vprem
+        working-directory: github-actions
+
+      - name: Push image
+        run: docker push us-central1-docker.pkg.dev/maven-440411/hello/vprem
