@@ -42,8 +42,8 @@ jobs:
           gcloud artifacts repositories list --project=maven-440411 --location=us-central1
           
       - name: Build image
-        run: docker build . --tag us-central1-docker.pkg.dev/maven-440411/hello/vprem1
+        run: docker build . --tag us-central1-docker.pkg.dev/maven-440411/hello/vprem2
 
 
       - name: Push image
-        run: docker push us-central1-docker.pkg.dev/maven-440411/hello/vprem1
+        run: docker push us-central1-docker.pkg.dev/maven-440411/hello/vprem2
