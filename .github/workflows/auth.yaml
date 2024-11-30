@@ -13,7 +13,7 @@ jobs:
     steps:
     - id: 'auth'
       name: 'Authenticate to GCP'
-      uses: 'google-github-actions/auth@@v1'
+      uses: 'google-github-actions/auth@v1'
       with:
           create_credentials_file: 'true'
           workload_identity_provider: projects/116322268382/locations/global/workloadIdentityPools/github/providers/my-repo
